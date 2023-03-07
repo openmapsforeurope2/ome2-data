@@ -130,7 +130,7 @@ CREATE TYPE railway_use_value AS ENUM (
 DROP TABLE IF EXISTS ome2_tn.road_link CASCADE;
 CREATE TABLE ome2_tn.road_link (
     inspireid serial not null PRIMARY KEY,
-    geom GEOMETRY(LINESTRING, 4326),
+    geom GEOMETRY(LINESTRINGZ, 4326),
     country varchar(8),
     form_of_way form_of_way_value,
     functional_road_class functional_road_class_value,
@@ -152,7 +152,7 @@ CREATE TABLE ome2_tn.road_link (
 DROP TABLE IF EXISTS ome2_tn.road_node CASCADE;
 CREATE TABLE ome2_tn.road_node (
     inspireid serial not null PRIMARY KEY,
-    geom GEOMETRY(POINT, 4326),
+    geom GEOMETRY(POINTZ, 4326),
     country varchar(8),
     form_of_road_node form_of_road_node_value,
     begin_lifespan_version timestamp,
@@ -167,7 +167,7 @@ CREATE TABLE ome2_tn.road_service (
     inspireid serial not null PRIMARY KEY,
     geom GEOMETRY(POINT, 4326),
     country varchar(8),
-    geom_area GEOMETRY(MULTIPOLYGON, 4326),
+    geom_area GEOMETRY(MULTIPOLYGONZ, 4326),
     type road_service_type_value,
     geographical_name varchar(255), -- field called 'name' in specs, renamed as geographical_name for harmonisation
     begin_lifespan_version timestamp,
@@ -197,7 +197,7 @@ CREATE TABLE ome2_tn.marker_post (
 DROP TABLE IF EXISTS ome2_tn.railway_link CASCADE;
 CREATE TABLE ome2_tn.railway_link (
     inspireid serial not null PRIMARY KEY,
-    geom GEOMETRY(LINESTRING, 4326),
+    geom geometry(LineStringZ, 4326),
     country varchar(8),
     type railway_type_value,
     number_of_tracks integer,
@@ -210,13 +210,13 @@ CREATE TABLE ome2_tn.railway_link (
     valid_to timestamp
 );
 
--- Road_service
+-- Railway_station
 DROP TABLE IF EXISTS ome2_tn.railway_station CASCADE;
 CREATE TABLE ome2_tn.railway_station (
     inspireid serial not null PRIMARY KEY,
-    geom GEOMETRY(POINT, 4326),
+    geom GEOMETRY(POINTZ, 4326),
     country varchar(8),
-    geom_area GEOMETRY(MULTIPOLYGON, 4326),
+    geom_area GEOMETRY(MULTIPOLYGONZ, 4326),
     station_code varchar(255),
     railway_use railway_use_value,
     begin_lifespan_version timestamp,
