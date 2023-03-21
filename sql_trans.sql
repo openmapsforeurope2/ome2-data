@@ -145,6 +145,7 @@ CREATE TABLE ome2_tn.road_link (
     national_road_code varchar(80), -- planned to be stored on complex "road" feature class
     european_route_number varchar(80), -- planned to be stored on complex "road" feature class
     w_national_identifier varchar (255), -- added for process, to be deleted before release
+    w_step varchar(80),
     begin_lifespan_version timestamp,
     end_lifespan_version timestamp,
     valid_from timestamp,
