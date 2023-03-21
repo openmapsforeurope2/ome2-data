@@ -137,11 +137,14 @@ CREATE TABLE ome2_tn.road_link (
     number_of_lanes integer,
 	vertical_position vertical_position_value,
 	trans_european_transport_network ten_t_network_value,
-	geographical_name varchar(255), --normalement porté par road
+	geographical_name varchar(255), -- planned to be stored on complex "road" feature class
 	road_surface_category road_surface_category_value,
 	traffic_flow_direction link_direction_value,
 	access_restriction access_restriction_value,
 	condition_of_facility condition_of_facility_value,
+    national_road_code varchar(80), -- planned to be stored on complex "road" feature class
+    european_route_number varchar(80), -- planned to be stored on complex "road" feature class
+    national_identifier varchar (255), -- added for process, to be deleted before release
     begin_lifespan_version timestamp,
     end_lifespan_version timestamp,
     valid_from timestamp,
