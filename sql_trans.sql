@@ -130,7 +130,7 @@ CREATE TYPE railway_use_value AS ENUM (
 DROP TABLE IF EXISTS ome2_tn.road_link CASCADE;
 CREATE TABLE ome2_tn.road_link (
     inspireid uuid DEFAULT uuid_generate_v4() PRIMARY KEY,
-    geom GEOMETRY(LINESTRINGZ, 4326),
+    geom GEOMETRY(LINESTRINGZ, 3035),
     country varchar(8),
     form_of_way form_of_way_value,
     functional_road_class functional_road_class_value,
@@ -154,55 +154,15 @@ CREATE TABLE ome2_tn.road_link (
 
 -- Road_link_wh (working history)
 DROP TABLE IF EXISTS ome2_tn.road_link_wh CASCADE;
-CREATE TABLE ome2_tn.road_link_wh (
-    inspireid uuid DEFAULT uuid_generate_v4() PRIMARY KEY,
-    geom GEOMETRY(LINESTRINGZ, 4326),
-    country varchar(8),
-    form_of_way form_of_way_value,
-    functional_road_class functional_road_class_value,
-    number_of_lanes integer,
-	vertical_position vertical_position_value,
-	trans_european_transport_network ten_t_network_value,
-	geographical_name varchar(255), -- planned to be stored on complex "road" feature class
-	road_surface_category road_surface_category_value,
-	traffic_flow_direction link_direction_value,
-	access_restriction access_restriction_value,
-	condition_of_facility condition_of_facility_value,
-    national_road_code varchar(80), -- planned to be stored on complex "road" feature class
-    european_route_number varchar(80), -- planned to be stored on complex "road" feature class
-    w_national_identifier varchar (255), -- added for process, to be deleted before release
-    w_step varchar(80),
-    w_modification_type varchar(80), -- CREATE / UPDATE / DELETE
-    begin_lifespan_version timestamp,
-    end_lifespan_version timestamp,
-    valid_from timestamp,
-    valid_to timestamp   
-);
+CREATE TABLE ome2_tn.road_link_wh AS SELECT * FROM ome2_tn.road_link WITH NO DATA;
+ALTER TABLE ome2_tn.road_link_wh ADD COLUMN w_modification_type varchar(80);
+ALTER TABLE ome2_tn.road_link_wh ADD COLUMN w_modification_step varchar(80);
+ALTER TABLE public.road_link_w ADD PRIMARY KEY (inspireid, w_modification_step);
 
 -- Road_link work table
 DROP TABLE IF EXISTS public.road_link_w CASCADE;
-CREATE TABLE public.road_link_w (
-    inspireid uuid DEFAULT uuid_generate_v4() PRIMARY KEY,
-    geom GEOMETRY(LINESTRINGZ, 4326),
-    country varchar(8),
-    form_of_way form_of_way_value,
-    functional_road_class functional_road_class_value,
-    number_of_lanes integer,
-	vertical_position vertical_position_value,
-	trans_european_transport_network ten_t_network_value,
-	geographical_name varchar(255), -- planned to be stored on complex "road" feature class
-	road_surface_category road_surface_category_value,
-	traffic_flow_direction link_direction_value,
-	access_restriction access_restriction_value,
-	condition_of_facility condition_of_facility_value,
-    national_road_code varchar(80), -- planned to be stored on complex "road" feature class
-    european_route_number varchar(80), -- planned to be stored on complex "road" feature class
-    w_national_identifier varchar (255), -- added for process, to be deleted before release
-    begin_lifespan_version timestamp,
-    end_lifespan_version timestamp,
-    valid_from timestamp,
-    valid_to timestamp   
-);
+CREATE TABLE public.road_link_w AS SELECT * FROM ome2_tn.road_link WITH NO DATA;
+ALTER TABLE public.road_link_w ADD PRIMARY KEY (inspireid);
 
 -- Road_node
 DROP TABLE IF EXISTS ome2_tn.road_node CASCADE;
