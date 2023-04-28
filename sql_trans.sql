@@ -17,7 +17,8 @@ CREATE TYPE form_of_way_value AS ENUM (
     'slip_road',
     'tractor',
     'traffic_square',
-    'walkway'
+    'walkway',
+    ''
 );
 
 DROP TYPE IF EXISTS functional_road_class_value;
@@ -31,27 +32,31 @@ CREATE TYPE functional_road_class_value AS ENUM (
     'sixth_class',
     'seventh_class',
     'eighth_class',
-    'ninth_class'
+    'ninth_class',
+    ''
 );
 
 DROP TYPE IF EXISTS vertical_position_value;
 CREATE TYPE vertical_position_value AS ENUM (
     'on_ground_surface', 
     'suspended_or_elevated',
-    'underground'
+    'underground',
+    ''
 );
 
 DROP TYPE IF EXISTS ten_t_network_value;
 CREATE TYPE ten_t_network_value AS ENUM (
     'comprehensive_ten_t_network', 
     'core_ten_t_network',
-    'no_ten_t_network'
+    'no_ten_t_network',
+    ''
 );
 
 DROP TYPE IF EXISTS road_surface_category_value;
 CREATE TYPE road_surface_category_value AS ENUM (
     'paved', 
-    'unpaved'
+    'unpaved',
+    ''
 );
 
 -- pas trouvé dans diagrammes UML
@@ -59,7 +64,8 @@ DROP TYPE IF EXISTS link_direction_value;
 CREATE TYPE link_direction_value AS ENUM (
     'both_directions',
     'indirection',  
-    'opposite_direction'
+    'opposite_direction',
+    ''
 );
 
 DROP TYPE IF EXISTS access_restriction_value;
@@ -69,7 +75,8 @@ CREATE TYPE access_restriction_value AS ENUM (
     'private',
     'public_access',
     'seasonal',
-    'toll'
+    'toll',
+    ''
 );
 
 DROP TYPE IF EXISTS condition_of_facility_value;
@@ -78,7 +85,8 @@ CREATE TYPE condition_of_facility_value AS ENUM (
     'functional',
     'projected',
     'under_construction',
-    'decommissioned'
+    'decommissioned',
+    ''
 );
 
 DROP TYPE IF EXISTS form_of_road_node_value;
@@ -91,7 +99,8 @@ CREATE TYPE form_of_road_node_value AS ENUM (
     'road_end',
     'roundabout',
     'traffic_square',
-    'road_service_area'
+    'road_service_area',
+    ''
 );
 
 DROP TYPE IF EXISTS road_service_type_value;
@@ -99,8 +108,9 @@ CREATE TYPE road_service_type_value AS ENUM (
     'bus_station',
     'parking',
     'rest_area',
-    'toll' --,
-    --'electric_car_loading_stations' valeur présente dans specs mais pas dans diagrammes UML
+    'toll',
+    --'electric_car_loading_stations' valeur présente dans specs mais pas dans diagrammes UML,
+    ''
 );
 
 DROP TYPE IF EXISTS railway_type_value;
@@ -112,7 +122,8 @@ CREATE TYPE railway_type_value AS ENUM (
     'monorail',
     'suspended_rail',
     'train',
-    'tramway'
+    'tramway',
+    ''
 );
 
 DROP TYPE IF EXISTS railway_use_value;
@@ -120,7 +131,8 @@ CREATE TYPE railway_use_value AS ENUM (
     'cargo',
     'passenger',
     'mixed',
-    'car_shuttle'
+    'car_shuttle',
+    ''
 );
 
 
