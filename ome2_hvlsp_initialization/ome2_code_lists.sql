@@ -19,6 +19,16 @@ CREATE TYPE boundary_source_value AS ENUM (
 );
 
 
+DROP TYPE IF EXISTS cf_status_value;
+CREATE TYPE cf_status_value AS ENUM (
+    'not_edge_matched',
+    'edge_matched',
+    'agreed_1',
+	'agreed_2',
+	'agreed'
+);
+
+
 --------------------------------------------------
 -- Administrative Units (au)                     |
 --------------------------------------------------
