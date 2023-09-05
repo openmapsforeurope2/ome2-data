@@ -1,6 +1,4 @@
-GRANT CONNECT ON DATABASE ome2_hvlsp_v1 TO PUBLIC;
-
-GRANT g_ome2_user TO ome2_user;
+GRANT CONNECT ON DATABASE ome2_hvlsp_template TO PUBLIC;
 
 CREATE SCHEMA au;
 CREATE SCHEMA hy;

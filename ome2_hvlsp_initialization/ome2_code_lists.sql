@@ -6,9 +6,11 @@ DROP TYPE IF EXISTS boundary_type_value;
 CREATE TYPE boundary_type_value AS ENUM (
     'international_boundary',
     'maritime_boundary',
-    'land_maritime_boundary',
+    'maritime_boundary#coastline_sea_limit',
     'coastline_sea_limit',
-    'directory_line'
+    'coastline_sea_limit#maritime_boundary',
+    'directory_line',
+    'inland_water_boundary'
 );
 
 DROP TYPE IF EXISTS boundary_source_value;
